@@ -1,4 +1,7 @@
 import { RequestHandler } from 'express';
+import { getConnection } from 'typeorm';
+
+import Article from '../../lib/model/article';
 
 const msg: string = 'GET /articles/';
 
@@ -7,4 +10,11 @@ const test: RequestHandler = (req, res, next) => {
   return next();
 };
 
-export default test;
+const getArticleList: RequestHandler = async (req, res, next) => {
+  const db = getConnection();
+  const rows = await db.getRepository(Article).find();
+  res.json(rows);
+  return next();
+}
+
+export { test, getArticleList };

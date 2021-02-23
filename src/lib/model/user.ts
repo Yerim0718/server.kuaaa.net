@@ -30,4 +30,6 @@ export default class User {
 
     @UpdateDateColumn()
     updatedAt!: Date;
+
+    //profileImage
 }

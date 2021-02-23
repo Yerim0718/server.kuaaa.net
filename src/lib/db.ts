@@ -2,6 +2,8 @@ import { createConnection } from 'typeorm';
 
 import User from './model/user';
 import Auth from './model/auth';
+import Article from './model/article';
+import Comment from './model/comment';
 
 const initConnection = async () => {
   await createConnection({
@@ -11,6 +13,8 @@ const initConnection = async () => {
     entities: [
       User,
       Auth,
+      Article,
+      Comment,
     ],
     synchronize: true,
     logging: 'all',
